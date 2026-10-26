@@ -1,0 +1,502 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Submit to El Memeño</title>
+<meta name="description" content="Enter the El Memeño meme competition on 6529 without a crypto wallet. We make you a free one in your browser.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://elmemeno.tito.co/submit">
+<meta property="og:title" content="Submit to El Memeño">
+<meta property="og:description" content="No wallet? No problem. Upload your El Niño meme and we make you a free 6529 account in your browser.">
+<meta property="og:image" content="https://elmemeno.tito.co/rules.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+:root{
+  --ground:#f6f8fc; --paper:#ffffff; --ink:#10131a; --muted:#566074; --line:#dbe1ec;
+  --sun:#e0205e; --sun-soft:#ffe3ec; --sea:#1f74c4; --sea-soft:#e2eefa; --heat:#b85a00; --ok:#11804a; 
+  --display:"Bricolage Grotesque",ui-sans-serif,system-ui,sans-serif;
+  --body:"Atkinson Hyperlegible",ui-sans-serif,system-ui,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --ground:#0c1018; --paper:#141a26; --ink:#eef1f7; --muted:#9aa5bb; --line:#26304a;
+  --sun:#ff5b8e; --sun-soft:#3a1624; --sea:#5aa7ee; --sea-soft:#122338; --heat:#ffb454; --ok:#4fd18b; 
+}}
+:root[data-theme="dark"]{
+  --ground:#0c1018; --paper:#141a26; --ink:#eef1f7; --muted:#9aa5bb; --line:#26304a;
+  --sun:#ff5b8e; --sun-soft:#3a1624; --sea:#5aa7ee; --sea-soft:#122338; --heat:#ffb454; --ok:#4fd18b; 
+}
+*{box-sizing:border-box}
+body{background:var(--ground);color:var(--ink);font:17px/1.6 var(--body);margin:0;padding-inline:16px;padding-block:0 64px}
+.wrap{max-width:640px;margin:0 auto}
+header{padding-block:28px 18px}
+.eyebrow{font:500 12px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--sun)}
+h1{font:800 min(50px,7.1vw)/1.05 var(--display);letter-spacing:-.02em;margin:10px 0 12px;white-space:nowrap}
+h2{font:700 24px/1.2 var(--display);margin:0 0 10px;text-wrap:balance}
+.lede{color:var(--muted);margin:0 0 8px;max-width:58ch}
+p{margin:0 0 12px}
+a{color:var(--sea);text-underline-offset:3px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:18px 20px}
+label{display:block;font-weight:700;margin:0 0 6px}
+.hint{font-weight:400;font-size:14px;color:var(--muted);margin-left:6px}
+.field{margin-bottom:14px}
+input[type=text],input[type=email],textarea{width:100%;font:inherit;color:var(--ink);background:var(--ground);border:1px solid var(--line);border-radius:6px;padding:8px 12px}
+textarea{min-height:44px;height:44px;resize:vertical}
+input:focus-visible,textarea:focus-visible,button:focus-visible,.drop:focus-within{outline:2px solid var(--sea);outline-offset:2px}
+.handle{display:flex;align-items:center;gap:0}
+.handle span{font-family:var(--mono);background:var(--sea-soft);border:1px solid var(--line);border-right:0;border-radius:6px 0 0 6px;padding:8px 10px;color:var(--muted)}
+.handle input{border-radius:0 6px 6px 0}
+.status{font-size:14px;margin-top:4px}.status:empty{display:none}
+.status.bad{color:var(--sun)} .status.good{color:var(--ok)}
+.drop{position:relative;border:2px dashed var(--line);border-radius:8px;padding:14px;text-align:center;color:var(--muted);cursor:pointer}
+.drop.has{border-style:solid;padding:10px}
+.drop input{position:absolute;inset:0;opacity:0;cursor:pointer}
+.drop img,.drop video{max-width:100%;max-height:360px;border-radius:4px;display:block;margin:0 auto}
+button{font:700 17px/1 var(--display);border:0;border-radius:8px;padding:13px 22px;cursor:pointer;background:var(--sun);color:#fff;width:100%}
+button.secondary{background:var(--sea-soft);color:var(--ink);border:1px solid var(--line)}
+button:disabled{opacity:.5;cursor:not-allowed}
+.row{display:flex;gap:10px;flex-wrap:wrap}
+.row button{flex:1 1 180px}
+.words{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:16px 0;padding:0;list-style:none;counter-reset:w}
+@media (max-width:480px){.words{grid-template-columns:repeat(2,1fr)}}
+.words li{counter-increment:w;font:500 16px/1 var(--mono);background:var(--ground);border:1px solid var(--line);border-radius:6px;padding:10px}
+.words li::before{content:counter(w) ". ";color:var(--muted)}
+.warn{background:var(--sun-soft);border-radius:8px;padding:14px 16px;margin-bottom:16px}
+.warn p:last-child{margin:0}
+.check{display:flex;gap:10px;align-items:flex-start;font-weight:400;margin:16px 0}
+.check input{width:20px;height:20px;margin-top:3px;flex:none}
+ol.progress{list-style:none;padding:0;margin:0}
+ol.progress li{padding:8px 0 8px 30px;position:relative;color:var(--muted)}
+ol.progress li::before{content:"";position:absolute;left:4px;top:15px;width:12px;height:12px;border-radius:50%;border:2px solid var(--line)}
+ol.progress li.doing{color:var(--ink)} ol.progress li.doing::before{border-color:var(--sea);border-top-color:transparent;animation:spin .8s linear infinite}
+ol.progress li.done{color:var(--ink)} ol.progress li.done::before{background:var(--ok);border-color:var(--ok)}
+ol.progress li.fail{color:var(--sun)} ol.progress li.fail::before{background:var(--sun);border-color:var(--sun)}
+@keyframes spin{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){ol.progress li.doing::before{animation:none}}
+.err{color:var(--sun);margin-top:12px}
+.addr{font:500 13px/1.4 var(--mono);word-break:break-all;color:var(--muted)}
+dialog{max-width:520px;width:calc(100% - 32px);border:3px solid var(--ink);box-shadow:8px 8px 0 var(--ink);border-radius:6px;background:var(--paper);color:var(--ink);padding:22px}
+dialog::backdrop{background:rgb(16 19 26 / .5)}
+dialog p{font-size:16px}
+dialog button{margin-top:6px}
+[hidden]{display:none!important}
+footer{margin-top:40px;border-top:1px solid var(--line);padding-top:18px;font-size:14px;color:var(--muted)}
+</style>
+
+<div class="wrap">
+<header>
+  <div class="eyebrow">El Memeño · meme competition on 6529</div>
+  <h1>Submit your El Niño meme</h1>
+  <p class="lede">Remixes welcome. <a href="#ip" id="ip-open">No copyrighted IP</a>, so a winner can become a Meme Card and gets the chance to submit it to the Memes <a href="https://6529.io/about/apply" target="_blank" rel="noopener">Main Stage</a>.</p>
+  <p class="lede">No crypto wallet needed. This page makes you a free one in your browser. No money, no fees.</p>
+</header>
+
+<dialog id="ip" aria-labelledby="ip-h">
+  <h2 id="ip-h">What "no copyrighted IP" means</h2>
+  <p>Every Meme Card is released under <a href="https://creativecommons.org/share-your-work/public-domain/cc0/" target="_blank" rel="noopener">CC0</a>, a public domain license. The artist gives up their copyright, so anyone can use, remix or sell the art without asking (<a href="https://6529.io/about/license" target="_blank" rel="noopener">6529's license page</a>).</p>
+  <p>You can only give away rights you own. So leave out other people's characters, logos, brand names, photos, song lyrics and movie stills. Your own drawings, your own photos, public domain images and other CC0 art, including existing Meme Cards, are all fine.</p>
+  <form method="dialog"><button>Got it</button></form>
+</dialog>
+
+<!-- Step 1: the entry -->
+<section id="s-form" class="card">
+  <form id="entry" novalidate>
+    <div class="field">
+      <label for="file">Your meme <span class="hint">Image, GIF or short video</span></label>
+      <div class="drop" id="dropzone">
+        <input type="file" id="file" accept="image/png,image/jpeg,image/gif,image/webp,video/mp4,video/quicktime" required>
+        <div id="drop-empty">Tap to choose a file, or drop it here</div>
+        <div id="drop-preview"></div>
+      </div>
+    </div>
+    <div class="field">
+      <label for="title">Title</label>
+      <input type="text" id="title" maxlength="200" required placeholder="El Niño's running hot">
+    </div>
+    <div class="field">
+      <label for="caption">Caption <span class="hint">Optional</span></label>
+      <textarea id="caption" maxlength="2000"></textarea>
+    </div>
+    <div class="field">
+      <label for="handle">Pick a username <span class="hint">Letters, numbers, _</span></label>
+      <div class="handle"><span>@</span><input type="text" id="handle" autocomplete="username" autocapitalize="off" spellcheck="false" maxlength="15" required></div>
+      <div class="status" id="handle-status" aria-live="polite"></div>
+    </div>
+    <div class="field">
+      <label for="email">Email <span class="hint">To reach you if you win. Never public.</span></label>
+      <input type="email" id="email" autocomplete="email" required>
+    </div>
+    <button type="submit" id="go">Next: make my account</button>
+    <div class="err" id="form-err" role="alert"></div>
+  </form>
+</section>
+
+<!-- Step 2: the seed phrase -->
+<section id="s-seed" class="card" hidden>
+  <h2>Save these 12 words</h2>
+  <div class="warn">
+    <p><b>This is your account.</b> These words are the only way back into it, and the only way to receive a prize. We never see them and cannot recover them.</p>
+    <p>Write them down or save the file. Never share them with anyone, including us.</p>
+  </div>
+  <ol class="words" id="words"></ol>
+  <div class="row">
+    <button type="button" class="secondary" id="copy">Copy words</button>
+    <button type="button" class="secondary" id="download">Save as a file</button>
+  </div>
+  <label class="check"><input type="checkbox" id="saved"> I saved my 12 words somewhere safe.</label>
+  <button type="button" id="post" disabled>Post my meme</button>
+</section>
+
+<!-- Step 3: posting -->
+<section id="s-post" class="card" hidden>
+  <h2>Posting your meme</h2>
+  <ol class="progress" id="progress">
+    <li data-step="login">Signing in to 6529</li>
+    <li data-step="profile">Creating @<span class="h"></span></li>
+    <li data-step="upload">Uploading your meme</li>
+    <li data-step="drop">Entering the competition</li>
+  </ol>
+  <div class="err" id="post-err" role="alert"></div>
+  <button type="button" id="retry" hidden>Try again</button>
+</section>
+
+<!-- Step 4: done -->
+<section id="s-done" class="card" hidden>
+  <h2>You're in!</h2>
+  <p>Your meme is live in the El Memeño competition. Voting runs until Nov 7.</p>
+  <p><a id="drop-link" href="#" target="_blank" rel="noopener">See your entry on 6529</a></p>
+  <p>To come back later, install <a href="https://metamask.io/download" target="_blank" rel="noopener">MetaMask</a>, choose "I have an existing wallet", enter your 12 words, then sign in at 6529.io.</p>
+  <p class="addr">Your wallet: <span id="addr"></span></p>
+  <button type="button" class="secondary" id="another">Submit another meme (up to 3)</button>
+</section>
+
+<!-- Netlify Forms needs a static copy of the form to register it. -->
+<form name="entrant" netlify netlify-honeypot="bot" hidden>
+  <input name="email"><input name="handle"><input name="wallet"><input name="title"><input name="drop_url"><input name="bot">
+</form>
+
+<footer>
+  Your wallet is made with <a href="https://docs.ethers.org/v6/" target="_blank" rel="noopener">ethers.js</a> inside this page. The 12 words never leave your device. Rules and dates: <a href="/">elmemeno.tito.co</a>.
+</footer>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ethers/6.13.4/ethers.umd.min.js"></script>
+<script>
+const API = "https://api.6529.io/api";
+const WAVE_ID = "c39f704b-8224-4d7f-aa6c-1c6369f9d23f";
+const HANDLE_RE = /^[A-Za-z0-9_]{3,15}$/;
+const $ = (id) => document.getElementById(id);
+$("ip-open").addEventListener("click", (e) => { e.preventDefault(); $("ip").showModal(); });
+
+let wallet = null;       // ethers HDNodeWallet, kept in memory only
+let token = null;        // 6529 access token
+let profileReady = false;
+let entry = null;        // {file, title, caption, handle, email}
+let handleOk = false;
+
+function show(id) {
+  for (const s of ["s-form", "s-seed", "s-post", "s-done"]) $(s).hidden = s !== id;
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+async function api(path, { method = "GET", body, auth = true } = {}) {
+  const headers = { accept: "application/json" };
+  if (body !== undefined) headers["content-type"] = "application/json";
+  if (auth && token) headers.authorization = `Bearer ${token}`;
+  const resp = await fetch(API + path, { method, headers, body: body === undefined ? undefined : JSON.stringify(body) });
+  const text = await resp.text();
+  let data = null;
+  try { data = text ? JSON.parse(text) : null; } catch { data = text; }
+  if (!resp.ok) {
+    const msg = (data && (data.error || data.message)) || `HTTP ${resp.status}`;
+    const err = new Error(typeof msg === "string" ? msg : JSON.stringify(msg));
+    err.status = resp.status;
+    throw err;
+  }
+  return data;
+}
+
+// --- file picker -----------------------------------------------------------
+$("file").addEventListener("change", () => {
+  const f = $("file").files[0];
+  const pv = $("drop-preview");
+  pv.textContent = "";
+  $("dropzone").classList.toggle("has", !!f);
+  $("drop-empty").hidden = !!f;
+  if (!f) return;
+  const url = URL.createObjectURL(f);
+  const el = document.createElement(f.type.startsWith("video/") ? "video" : "img");
+  el.src = url;
+  if (el.tagName === "VIDEO") { el.muted = true; el.loop = true; el.autoplay = true; el.playsInline = true; }
+  else el.alt = "Your meme";
+  pv.appendChild(el);
+});
+
+// --- username availability ----------------------------------------------
+let handleTimer = null;
+$("handle").addEventListener("input", () => {
+  handleOk = false;
+  clearTimeout(handleTimer);
+  const h = $("handle").value.trim();
+  const st = $("handle-status");
+  st.className = "status";
+  if (!h) { st.textContent = ""; return; }
+  if (!HANDLE_RE.test(h)) { st.textContent = "3 to 15 letters, numbers or underscores."; st.classList.add("bad"); return; }
+  st.textContent = "Checking…";
+  handleTimer = setTimeout(() => checkHandle(h), 400);
+});
+
+async function checkHandle(h) {
+  const st = $("handle-status");
+  try {
+    const r = await api(`/profiles/${encodeURIComponent(h)}/availability`, { auth: false });
+    if ($("handle").value.trim() !== h) return;
+    handleOk = !!r.available;
+    st.textContent = r.available ? `@${h} is available.` : (r.message || "That username is taken.");
+    st.className = "status " + (r.available ? "good" : "bad");
+  } catch (e) {
+    st.textContent = "Couldn't check right now. We'll try when you post.";
+    st.className = "status";
+    handleOk = true;
+  }
+  return handleOk;
+}
+
+// --- step 1 -> 2 -----------------------------------------------------------
+$("entry").addEventListener("submit", async (ev) => {
+  ev.preventDefault();
+  const err = $("form-err");
+  err.textContent = "";
+  const file = $("file").files[0];
+  const title = $("title").value.trim();
+  const handle = $("handle").value.trim();
+  const email = $("email").value.trim();
+  if (!file) return (err.textContent = "Choose your meme file.");
+  if (file.size > 100 * 1024 * 1024) return (err.textContent = "That file is over 100 MB. Try a smaller one.");
+  if (!title) return (err.textContent = "Give your meme a title.");
+  if (!profileReady) {
+    if (!HANDLE_RE.test(handle)) return (err.textContent = "Pick a username: 3 to 15 letters, numbers or underscores.");
+    if (!handleOk && !(await checkHandle(handle))) return (err.textContent = "That username is taken. Try another.");
+  }
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return (err.textContent = "Enter your email.");
+  entry = { file, title, caption: $("caption").value.trim(), handle, email };
+
+  if (wallet) { startPosting(); return; }   // second or third entry: same account
+  wallet = ethers.Wallet.createRandom();
+  const words = wallet.mnemonic.phrase.split(" ");
+  const ol = $("words");
+  ol.textContent = "";
+  for (const w of words) { const li = document.createElement("li"); li.textContent = w; ol.appendChild(li); }
+  $("saved").checked = false;
+  $("post").disabled = true;
+  show("s-seed");
+});
+
+// --- step 2 ------------------------------------------------------------------
+function seedText() {
+  return [
+    "El Memeño / 6529 account",
+    `Username: @${entry.handle}`,
+    `Wallet address: ${wallet.address}`,
+    "",
+    "Your 12 secret words (keep private, never share):",
+    wallet.mnemonic.phrase,
+    "",
+    "To sign in later: install MetaMask, choose \"I have an existing wallet\",",
+    "enter these 12 words, then connect at https://6529.io",
+  ].join("\n");
+}
+$("copy").addEventListener("click", async () => {
+  try { await navigator.clipboard.writeText(wallet.mnemonic.phrase); $("copy").textContent = "Copied"; }
+  catch { $("copy").textContent = "Copy failed. Write them down."; }
+});
+$("download").addEventListener("click", () => {
+  const blob = new Blob([seedText()], { type: "text/plain" });
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = `6529-${entry.handle}-secret-words.txt`;
+  a.click();
+  URL.revokeObjectURL(a.href);
+});
+$("saved").addEventListener("change", () => ($("post").disabled = !$("saved").checked));
+$("post").addEventListener("click", startPosting);
+$("retry").addEventListener("click", startPosting);
+
+// --- step 3 ------------------------------------------------------------------
+function mark(step, state) {
+  const li = $("progress").querySelector(`[data-step="${step}"]`);
+  li.className = state;
+}
+
+async function login() {
+  const n = await api(`/auth/session-nonce?signer_address=${wallet.address}&client_type=native&chain_id=1`, { auth: false });
+  const client_signature = await wallet.signMessage(n.signable_message);
+  // 6529 blocks this one endpoint for other sites' browsers, so it goes via our relay.
+  const r = await fetch("/.netlify/functions/login", {
+    method: "POST", headers: { "content-type": "application/json" },
+    body: JSON.stringify({ client_address: wallet.address, client_signature, server_signature: n.server_signature }),
+  });
+  const s = await r.json().catch(() => ({}));
+  if (!r.ok || !s.access_token) throw new Error(s.error || `Sign-in failed (HTTP ${r.status})`);
+  token = s.access_token;
+}
+
+async function createProfile() {
+  await api("/profiles", {
+    method: "POST",
+    // Leave website out: 6529 rejects null there. Banner = the El Memeño pink and blue.
+    body: { handle: entry.handle, classification: "PSEUDONYM", banner_1: "#e0205e", banner_2: "#1f74c4", sub_classification: null, pfp_url: null },
+  });
+  profileReady = true;
+  try { await setPfp(); } catch (e) { console.warn("pfp not set:", e); }   // nice to have, never blocks the entry
+}
+
+// Square 400px crop of the meme (first frame for video) as the profile picture.
+async function thumbnail(file) {
+  let src, w, h;
+  if (file.type.startsWith("video/")) {
+    src = document.createElement("video");
+    src.muted = true; src.playsInline = true; src.preload = "auto";
+    src.src = URL.createObjectURL(file);
+    await new Promise((ok, bad) => { src.onloadeddata = ok; src.onerror = bad; });
+    src.currentTime = Math.min(0.5, (src.duration || 1) / 2);
+    await new Promise((ok) => (src.onseeked = ok));
+    w = src.videoWidth; h = src.videoHeight;
+  } else {
+    src = await createImageBitmap(file);
+    w = src.width; h = src.height;
+  }
+  const side = Math.min(w, h), size = 400;
+  const c = document.createElement("canvas");
+  c.width = c.height = size;
+  c.getContext("2d").drawImage(src, (w - side) / 2, (h - side) / 2, side, side, 0, 0, size, size);
+  return await new Promise((ok) => c.toBlob(ok, "image/webp", 0.9));
+}
+
+async function setPfp() {
+  const blob = await thumbnail(entry.file);
+  const fd = new FormData();
+  fd.append("pfp", blob, "pfp.webp");
+  const r = await fetch(`${API}/profiles/${encodeURIComponent(entry.handle.toLowerCase())}/pfp`, {
+    method: "POST", headers: { authorization: `Bearer ${token}` }, body: fd,
+  });
+  if (!r.ok) throw new Error(`HTTP ${r.status} ${await r.text()}`);
+}
+
+const PART_SIZE = 5 * 1024 * 1024;
+
+async function putPart(url, blob, contentType) {
+  try {
+    const r = await fetch(url, { method: "PUT", headers: { "content-type": contentType }, body: blob });
+    if (!r.ok) throw new Error(`Upload failed (HTTP ${r.status})`);
+    const etag = r.headers.get("etag");
+    if (etag) return etag.replaceAll('"', "");
+    throw new Error("no-etag");
+  } catch (e) {
+    // The storage bucket may not allow this site's origin (or hide the ETag
+    // header). Fall back to a relay that forwards the bytes; it never sees keys.
+    const r = await fetch(`/.netlify/functions/s3put?url=${encodeURIComponent(url)}`, {
+      method: "POST", headers: { "content-type": contentType }, body: blob,
+    });
+    if (!r.ok) throw new Error(`Upload failed (${await r.text()})`);
+    return (await r.json()).etag;
+  }
+}
+
+async function upload() {
+  const f = entry.file;
+  const contentType = f.type === "image/jpg" ? "image/jpeg" : f.type;
+  const start = await api("/drop-media/multipart-upload", { method: "POST", body: { file_name: f.name, content_type: contentType } });
+  const parts = [];
+  for (let i = 0, no = 1; i < f.size; i += PART_SIZE, no++) {
+    const { upload_url } = await api("/drop-media/multipart-upload/part", { method: "POST", body: { upload_id: start.upload_id, key: start.key, part_no: no } });
+    parts.push({ part_no: no, etag: await putPart(upload_url, f.slice(i, i + PART_SIZE), contentType) });
+  }
+  let done = await api("/drop-media/multipart-upload/completion", { method: "POST", body: { upload_id: start.upload_id, key: start.key, parts } });
+  // 6529 scans media before it can be posted; wait until it's ready.
+  for (let i = 0; done.media_upload_id && done.media_status && String(done.media_status).toLowerCase() !== "ready"; i++) {
+    if (String(done.media_status).toLowerCase() === "failed") throw new Error(done.media_error || "6529 couldn't process that file. Try a different one.");
+    if (i > 80) throw new Error("6529 is taking too long to process the file. Try again.");
+    await new Promise((r) => setTimeout(r, 1500));
+    done = await api(`/drop-media/uploads/${encodeURIComponent(done.media_upload_id)}`);
+  }
+  return { url: done.media_url, mime_type: contentType };
+}
+
+async function postDrop(media) {
+  const d = await api("/drops", {
+    method: "POST",
+    body: {
+      wave_id: WAVE_ID,
+      drop_type: "PARTICIPATORY",
+      title: entry.title,
+      parts: [{ content: entry.caption || null, quoted_drop: null, media: [media] }],
+      mentioned_users: [], referenced_nfts: [], metadata: [],
+      signature: null, is_safe_signature: false, signer_address: wallet.address,
+    },
+  });
+  return `https://6529.io/waves/${WAVE_ID}?drop=${d.id}`;
+}
+
+function recordEntrant(dropUrl) {
+  const body = new URLSearchParams({
+    "form-name": "entrant", email: entry.email, handle: entry.handle,
+    wallet: wallet.address, title: entry.title, drop_url: dropUrl,
+  });
+  fetch("/", { method: "POST", headers: { "content-type": "application/x-www-form-urlencoded" }, body }).catch(() => {});
+}
+
+let posting = false;
+async function startPosting() {
+  if (posting) return;
+  posting = true;
+  show("s-post");
+  $("post-err").textContent = "";
+  $("retry").hidden = true;
+  document.querySelectorAll("#progress .h").forEach((s) => (s.textContent = entry.handle));
+  let step = "login";
+  try {
+    if (!token) { mark("login", "doing"); await login(); }
+    mark("login", "done");
+    step = "profile";
+    if (!profileReady) { mark("profile", "doing"); await createProfile(); }
+    mark("profile", "done");
+    step = "upload"; mark("upload", "doing");
+    const media = await upload();
+    mark("upload", "done");
+    step = "drop"; mark("drop", "doing");
+    const dropUrl = await postDrop(media);
+    mark("drop", "done");
+    recordEntrant(dropUrl);
+    $("drop-link").href = dropUrl;
+    $("addr").textContent = wallet.address;
+    show("s-done");
+  } catch (e) {
+    mark(step, "fail");
+    if (e.status === 401) token = null;
+    let msg = e.message;
+    if (step === "profile" && /handle|username/i.test(msg)) {
+      msg += " Go back and pick a different username.";
+    }
+    $("post-err").textContent = `Something went wrong: ${msg}`;
+    $("retry").hidden = false;
+  } finally {
+    posting = false;
+  }
+}
+
+$("another").addEventListener("click", () => {
+  $("entry").reset();
+  $("file").dispatchEvent(new Event("change"));
+  $("handle").value = entry.handle;
+  $("handle").disabled = true;
+  $("handle-status").textContent = `Posting as @${entry.handle}.`;
+  $("handle-status").className = "status good";
+  $("email").value = entry.email;
+  $("go").textContent = "Post this meme";
+  for (const li of $("progress").children) li.className = "";
+  show("s-form");
+});
+</script>
